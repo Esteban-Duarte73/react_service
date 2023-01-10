@@ -1,0 +1,24 @@
+
+version: "3.8"
+networks:
+  react:
+    external: true
+
+services:
+  
+  react:
+    container_name: react-dev
+    image: react-dev
+    build:
+      context: ../../services/react_ms/
+      dockerfile: ../../docker/common/build/Dockerfile
+      target: development
+    command: /bin/sh -c "cd /home/app/web && npm start" 
+    volumes:
+      - ../../services/react_ms:/home/app/web
+    ports:
+      - "${REACT_PORT}:${REACT_PORT}"
+    networks:
+      react:
+        aliases:
+          - ${REACT_HOST}
