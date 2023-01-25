@@ -13,7 +13,7 @@ services:
       context: ../../services/react_ms/
       dockerfile: ../../docker/common/build/Dockerfile
       target: development
-    command: /bin/sh -c "cd /home/app/web && npm start" 
+    #command: /bin/sh -c "npm start" 
     volumes:
       - ../../services/react_ms:/home/app/web
     ports:
